@@ -978,7 +978,33 @@
     }
   }
 
-  async function runCell(id) {
+  /* A cell counts as "from the master" when its last editor is not the notebook owner.
+     Only a normal user page uses this; in master mode Run behaves as usual. */
+  function isMasterEdited(cell) {
+    return !S.masterMode && !!cell.last_edited_by && !!S.ownerId && cell.last_edited_by !== S.ownerId;
+  }
+
+  /* Copies the text exactly as it is (line breaks and indentation included) as plain text. */
+  function copyText(text) {
+    function legacy() {
+      var prev = document.activeElement;
+      var ta = h('textarea', { 'aria-hidden': 'true', tabindex: '-1', readonly: true, style: { position: 'fixed', top: '0', left: '-9999px', opacity: '0' } });
+      ta.value = text;
+      document.body.appendChild(ta);
+      try { ta.focus({ preventScroll: true }); ta.select(); ta.setSelectionRange(0, text.length); document.execCommand('copy'); } catch (e) { /* ignore */ }
+      ta.remove();
+      if (prev && prev.focus) { try { prev.focus({ preventScroll: true }); } catch (e) { /* ignore */ } }
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext) {
+        navigator.clipboard.writeText(text).catch(legacy);
+        return;
+      }
+    } catch (e) { /* fall through to the older method */ }
+    legacy();
+  }
+
+  async function runCell(id, skipCopy) {
     var cell = getCell(id);
     if (!cell || cell.cell_type !== 'code') return;
     if (S.running[id]) {                                   // clicking again interrupts
@@ -986,6 +1012,8 @@
       S.outputs[id] = { outputs: [{ type: 'error', text: 'KeyboardInterrupt' }], ms: 0, interrupted: true };
       renderOutputs(id); return;
     }
+    // Run on a cell the master edited also copies its text (must happen right here, inside the click).
+    if (!skipCopy && isMasterEdited(cell) && cell.content) copyText(cell.content);
     S.stopAll = false;
     S.running[id] = true; setRunning(id, true);
     try { await connectRuntime(); } catch (e) { /* ignore */ }
@@ -1028,7 +1056,7 @@
     for (var i = 0; i < list.length; i++) {
       if (S.stopAll) break;
       if (list[i].cell_type === 'code') {
-        await runCell(list[i].id);
+        await runCell(list[i].id, true);                  // "Run all" never touches the clipboard
         while (S.running[list[i].id] && !S.stopAll) await sleep(40);
       }
     }
