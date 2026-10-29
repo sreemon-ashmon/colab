@@ -1013,7 +1013,7 @@
       renderOutputs(id); return;
     }
     // Run on a cell the master edited also copies its text (must happen right here, inside the click).
-    if (!skipCopy && isMasterEdited(cell) && cell.content) copyText(cell.content);
+    if (!skipCopy && cell.content) copyText(cell.content);
     S.stopAll = false;
     S.running[id] = true; setRunning(id, true);
     try { await connectRuntime(); } catch (e) { /* ignore */ }
