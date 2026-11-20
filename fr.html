@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,44 +6,59 @@
 <title>LEGENDARY KICKS</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+:root {
+    --gold: #c9a96e;
+    --bg: #070707;
+    --line: rgba(201, 169, 110, .18);
 }
 
 body {
-    background: #080808;
-    color: white;
-    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: #f4f1ea;
+    font-family: "Helvetica Neue", Arial, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* NAV */
 nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
     height: 80px;
     padding: 0 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #292929;
+    background: rgba(7, 7, 7, .7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 3px;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 8px;
 }
+
+.logo span { color: var(--gold); }
 
 nav a {
-    color: white;
+    color: #bdb7a8;
     text-decoration: none;
-    margin-left: 25px;
+    margin-left: 32px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    transition: color .3s;
 }
 
+nav a:hover { color: var(--gold); }
+
+/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -52,95 +66,117 @@ nav a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 30px;
+    padding: 120px 30px 60px;
+    background: radial-gradient(circle at 50% 55%, rgba(201,169,110,.12), transparent 60%);
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 10px;
+    margin-bottom: 28px;
 }
 
 .hero h1 {
-    font-size: clamp(55px, 12vw, 140px);
-    font-weight: 900;
-    letter-spacing: -7px;
+    font-size: clamp(48px, 10vw, 130px);
+    font-weight: 200;
+    letter-spacing: clamp(2px, 1vw, 14px);
+    line-height: 1;
 }
 
-.hero p {
-    color: #aaa;
-    margin-top: 20px;
-    letter-spacing: 4px;
+.hero h1 em {
+    font-style: normal;
+    color: var(--gold);
 }
 
 .shoe {
-    font-size: clamp(100px, 25vw, 240px);
-    margin: 35px 0;
-    filter: drop-shadow(0 20px 30px #333);
+    font-size: clamp(90px, 20vw, 210px);
+    margin: 45px 0 35px;
+    filter: drop-shadow(0 30px 40px rgba(201, 169, 110, .25));
+}
+
+.hero p {
+    color: #8d8879;
+    font-size: 12px;
+    letter-spacing: 6px;
 }
 
 .btn {
-    background: white;
-    color: black;
-    padding: 16px 35px;
+    display: inline-block;
+    margin-top: 45px;
+    padding: 17px 44px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 5px;
+    transition: all .4s;
 }
 
+.btn:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+/* ABOUT */
 .about {
-    min-height: 60vh;
+    min-height: 70vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     text-align: center;
-    padding: 40px;
+    padding: 60px 30px;
+    border-top: 1px solid var(--line);
 }
 
 .about h2 {
-    font-size: clamp(35px, 7vw, 75px);
+    font-size: clamp(32px, 6vw, 70px);
+    font-weight: 200;
+    letter-spacing: 6px;
+}
+
+.about .rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 30px 0;
 }
 
 .about p {
-    color: #999;
-    margin-top: 20px;
+    color: #8d8879;
+    letter-spacing: 3px;
+    font-size: 13px;
 }
 
-/* TROLL SECTION */
-
-.troll {
+/* FINGER */
+.finger-section {
     min-height: 100vh;
-    position: relative;
-    overflow: hidden;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    background: #111;
-    text-align: center;
-}
-
-.troll h2 {
-    font-size: clamp(35px, 7vw, 85px);
-    z-index: 2;
+    align-items: flex-end;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    background: radial-gradient(circle at 50% 100%, rgba(201,169,110,.1), transparent 65%);
 }
 
 .finger {
-    font-size: clamp(150px, 40vw, 400px);
-    transform: translateY(110%);
-    transition: transform 1.5s cubic-bezier(.2,.8,.2,1);
-    line-height: 1.2;
+    font-size: clamp(220px, 55vw, 560px);
+    line-height: .9;
+    transform: translateY(105%);
+    transition: transform 1.6s cubic-bezier(.2, .8, .2, 1);
+    filter: drop-shadow(0 0 60px rgba(201, 169, 110, .3));
 }
 
-.troll.show .finger {
-    transform: translateY(0);
-}
-
-.troll p {
-    font-size: 25px;
-    margin-top: 20px;
-    z-index: 2;
-}
+.finger-section.show .finger { transform: translateY(8%); }
 
 footer {
-    padding: 35px;
+    padding: 30px;
     text-align: center;
-    color: #777;
+    color: #5f5b51;
+    font-size: 11px;
+    letter-spacing: 4px;
+    border-top: 1px solid var(--line);
 }
 </style>
 </head>
@@ -148,7 +184,7 @@ footer {
 <body>
 
 <nav>
-    <div class="logo">LEGENDARY.</div>
+    <div class="logo">LEGENDARY<span>.</span></div>
     <div>
         <a href="#home">HOME</a>
         <a href="#about">ABOUT</a>
@@ -156,24 +192,21 @@ footer {
 </nav>
 
 <section class="hero" id="home">
-    <h1>BE LEGENDARY.</h1>
+    <div class="eyebrow">EST. 2026</div>
+    <h1>BE <em>LEGENDARY</em></h1>
     <div class="shoe">👟</div>
-    <p>NOT JUST SHOES. IT'S A LEGACY.</p>
-    <br><br>
+    <p>NOT JUST SHOES. A LEGACY.</p>
     <a href="#about" class="btn">EXPLORE COLLECTION</a>
 </section>
 
 <section class="about" id="about">
-    <h2>WALK YOUR OWN WAY.</h2>
-    <p>Designed for legends. Made for greatness.</p>
+    <h2>WALK YOUR OWN WAY</h2>
+    <div class="rule"></div>
+    <p>DESIGNED FOR LEGENDS. MADE FOR GREATNESS.</p>
 </section>
 
-<section class="troll" id="troll">
-    <h2>WAIT FOR IT...</h2>
-
+<section class="finger-section" id="finger">
     <div class="finger">🖕</div>
-
-    <p>YOU GOT TROLLED 😂</p>
 </section>
 
 <footer>
@@ -181,19 +214,17 @@ footer {
 </footer>
 
 <script>
-const troll = document.querySelector(".troll");
+const section = document.getElementById("finger");
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            troll.classList.add("show");
+            section.classList.add("show");
         }
     });
-}, {
-    threshold: 0.35
-});
+}, { threshold: 0.4 });
 
-observer.observe(troll);
+observer.observe(section);
 </script>
 
 </body>
