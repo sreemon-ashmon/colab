@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGENDARY KICKS</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+nav {
+    height: 80px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #292929;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 12vw, 140px);
+    font-weight: 900;
+    letter-spacing: -7px;
+}
+
+.hero p {
+    color: #aaa;
+    margin-top: 20px;
+    letter-spacing: 4px;
+}
+
+.shoe {
+    font-size: clamp(100px, 25vw, 240px);
+    margin: 35px 0;
+    filter: drop-shadow(0 20px 30px #333);
+}
+
+.btn {
+    background: white;
+    color: black;
+    padding: 16px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.about {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px;
+}
+
+.about h2 {
+    font-size: clamp(35px, 7vw, 75px);
+}
+
+.about p {
+    color: #999;
+    margin-top: 20px;
+}
+
+/* TROLL SECTION */
+
+.troll {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #111;
+    text-align: center;
+}
+
+.troll h2 {
+    font-size: clamp(35px, 7vw, 85px);
+    z-index: 2;
+}
+
+.finger {
+    font-size: clamp(150px, 40vw, 400px);
+    transform: translateY(110%);
+    transition: transform 1.5s cubic-bezier(.2,.8,.2,1);
+    line-height: 1.2;
+}
+
+.troll.show .finger {
+    transform: translateY(0);
+}
+
+.troll p {
+    font-size: 25px;
+    margin-top: 20px;
+    z-index: 2;
+}
+
+footer {
+    padding: 35px;
+    text-align: center;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">LEGENDARY.</div>
+    <div>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <h1>BE LEGENDARY.</h1>
+    <div class="shoe">👟</div>
+    <p>NOT JUST SHOES. IT'S A LEGACY.</p>
+    <br><br>
+    <a href="#about" class="btn">EXPLORE COLLECTION</a>
+</section>
+
+<section class="about" id="about">
+    <h2>WALK YOUR OWN WAY.</h2>
+    <p>Designed for legends. Made for greatness.</p>
+</section>
+
+<section class="troll" id="troll">
+    <h2>WAIT FOR IT...</h2>
+
+    <div class="finger">🖕</div>
+
+    <p>YOU GOT TROLLED 😂</p>
+</section>
+
+<footer>
+    © 2026 LEGENDARY KICKS. ALL RIGHTS RESERVED.
+</footer>
+
+<script>
+const troll = document.querySelector(".troll");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            troll.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.35
+});
+
+observer.observe(troll);
+</script>
+
+</body>
+</html>
