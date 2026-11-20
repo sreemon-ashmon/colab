@@ -3,180 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LEGENDARY KICKS</title>
+<title>Legendary Kicks — Premium Sneakers</title>
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 :root {
+    --bg: #0b0b0b;
+    --card: #f3f1ed;
     --gold: #c9a96e;
-    --bg: #070707;
-    --line: rgba(201, 169, 110, .18);
+    --text: #f4f1ea;
+    --muted: #8f8b80;
+    --line: rgba(255,255,255,.09);
 }
 
 body {
     background: var(--bg);
-    color: #f4f1ea;
+    color: var(--text);
     font-family: "Helvetica Neue", Arial, sans-serif;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: min(1200px, 90%); margin: 0 auto; }
 
 /* NAV */
 nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 80px;
-    padding: 0 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(7, 7, 7, .7);
-    backdrop-filter: blur(12px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+    height: 76px;
+    background: rgba(11,11,11,.8);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
-    z-index: 10;
 }
-
-.logo {
-    font-size: 18px;
-    font-weight: 300;
-    letter-spacing: 8px;
-}
-
-.logo span { color: var(--gold); }
-
-nav a {
-    color: #bdb7a8;
-    text-decoration: none;
-    margin-left: 32px;
-    font-size: 11px;
-    letter-spacing: 4px;
-    transition: color .3s;
-}
-
-nav a:hover { color: var(--gold); }
+nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 17px; letter-spacing: 7px; font-weight: 300; }
+.logo b { color: var(--gold); font-weight: 400; }
+.links a { margin-left: 30px; font-size: 11px; letter-spacing: 3px; color: #bdb8ab; transition: .3s; }
+.links a:hover { color: var(--gold); }
+.cart { border: 1px solid var(--gold); color: var(--gold) !important; padding: 9px 18px; }
 
 /* HERO */
 .hero {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-top: 76px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    text-align: center;
-    padding: 120px 30px 60px;
-    background: radial-gradient(circle at 50% 55%, rgba(201,169,110,.12), transparent 60%);
+    gap: 40px;
 }
-
-.eyebrow {
-    color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 10px;
-    margin-bottom: 28px;
-}
-
-.hero h1 {
-    font-size: clamp(48px, 10vw, 130px);
-    font-weight: 200;
-    letter-spacing: clamp(2px, 1vw, 14px);
-    line-height: 1;
-}
-
-.hero h1 em {
-    font-style: normal;
-    color: var(--gold);
-}
-
-.shoe {
-    font-size: clamp(90px, 20vw, 210px);
-    margin: 45px 0 35px;
-    filter: drop-shadow(0 30px 40px rgba(201, 169, 110, .25));
-}
-
-.hero p {
-    color: #8d8879;
-    font-size: 12px;
-    letter-spacing: 6px;
-}
-
+.eyebrow { color: var(--gold); font-size: 11px; letter-spacing: 7px; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(40px, 6vw, 82px); font-weight: 200; line-height: 1.05; letter-spacing: 1px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero p { margin: 26px 0 38px; color: var(--muted); line-height: 1.8; max-width: 440px; font-size: 15px; }
 .btn {
-    display: inline-block;
-    margin-top: 45px;
-    padding: 17px 44px;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 5px;
-    transition: all .4s;
+    display: inline-block; padding: 17px 40px;
+    background: var(--gold); color: #000;
+    font-size: 11px; letter-spacing: 4px; font-weight: 700; transition: .3s;
 }
+.btn:hover { background: #fff; }
+.btn.ghost { background: none; border: 1px solid var(--line); color: var(--text); margin-left: 12px; }
+.btn.ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-.btn:hover {
-    background: var(--gold);
-    color: #000;
-}
-
-/* ABOUT */
-.about {
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 60px 30px;
-    border-top: 1px solid var(--line);
-}
-
-.about h2 {
-    font-size: clamp(32px, 6vw, 70px);
-    font-weight: 200;
-    letter-spacing: 6px;
-}
-
-.about .rule {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 30px 0;
-}
-
-.about p {
-    color: #8d8879;
-    letter-spacing: 3px;
-    font-size: 13px;
-}
-
-/* FINGER */
-.finger-section {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+.hero-img {
+    background: var(--card);
+    aspect-ratio: 1 / 1;
+    display: flex; align-items: center; justify-content: center;
     overflow: hidden;
-    border-top: 1px solid var(--line);
-    background: radial-gradient(circle at 50% 100%, rgba(201,169,110,.1), transparent 65%);
 }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; }
 
-.finger {
-    font-size: clamp(220px, 55vw, 560px);
-    line-height: .9;
+/* TRUST BAR */
+.trust { border-block: 1px solid var(--line); }
+.trust .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.trust div { padding: 30px 10px; text-align: center; font-size: 11px; letter-spacing: 3px; color: #bdb8ab; border-right: 1px solid var(--line); }
+.trust div:last-child { border: 0; }
+.trust span { display: block; color: var(--gold); margin-bottom: 8px; font-size: 18px; }
+
+/* SECTIONS */
+section.block { padding: 110px 0; }
+.head { text-align: center; margin-bottom: 60px; }
+.head h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 200; letter-spacing: 5px; }
+.head .rule { width: 50px; height: 1px; background: var(--gold); margin: 24px auto 0; }
+
+/* PRODUCTS */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.product { cursor: pointer; }
+.thumb { background: var(--card); aspect-ratio: 1 / 1; overflow: hidden; position: relative; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.product:hover .thumb img { transform: scale(1.07); }
+.tag { position: absolute; top: 14px; left: 14px; background: #000; color: var(--gold); font-size: 10px; letter-spacing: 3px; padding: 7px 12px; }
+.info { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 2px 0; }
+.info h3 { font-size: 15px; font-weight: 400; letter-spacing: 1px; }
+.info small { color: var(--muted); font-size: 12px; display: block; margin-top: 6px; }
+.price { color: var(--gold); font-size: 16px; }
+.price s { color: #666; font-size: 12px; display: block; text-align: right; }
+
+/* FEATURE */
+.feature { background: #111; border-block: 1px solid var(--line); }
+.feature .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.feature .pic { background: var(--card); aspect-ratio: 4 / 5; overflow: hidden; }
+.feature .pic img { width: 100%; height: 100%; object-fit: cover; }
+.feature h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 200; letter-spacing: 3px; line-height: 1.2; }
+.feature p { color: var(--muted); line-height: 1.9; margin: 26px 0; }
+.feature ul { list-style: none; margin-bottom: 38px; }
+.feature li { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 13px; letter-spacing: 2px; color: #cfcabd; }
+.feature li::before { content: "—  "; color: var(--gold); }
+
+/* REVIEWS */
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.review { border: 1px solid var(--line); padding: 34px; }
+.stars { color: var(--gold); letter-spacing: 4px; margin-bottom: 18px; }
+.review p { color: #cfcabd; line-height: 1.8; font-size: 14px; }
+.review b { display: block; margin-top: 22px; font-size: 11px; letter-spacing: 3px; font-weight: 400; color: var(--muted); }
+
+/* NEWSLETTER */
+.news { text-align: center; border-top: 1px solid var(--line); padding: 100px 0; }
+.news h2 { font-weight: 200; letter-spacing: 5px; font-size: 30px; }
+.news p { color: var(--muted); margin: 18px 0 34px; font-size: 14px; }
+.news form { display: flex; justify-content: center; max-width: 520px; margin: 0 auto; }
+.news input { flex: 1; background: none; border: 1px solid var(--line); border-right: 0; padding: 17px 20px; color: #fff; font-size: 14px; outline: none; }
+.news input:focus { border-color: var(--gold); }
+.news button { background: var(--gold); border: 0; padding: 0 30px; font-size: 11px; letter-spacing: 3px; font-weight: 700; cursor: pointer; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--line); padding: 80px 0 50px; }
+.cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.cols p { color: var(--muted); font-size: 13px; line-height: 1.8; margin-top: 18px; max-width: 280px; }
+.cols h4 { font-size: 11px; letter-spacing: 4px; color: var(--gold); margin-bottom: 22px; font-weight: 400; }
+.cols a { display: block; color: #a8a396; font-size: 13px; margin-bottom: 13px; transition: .3s; }
+.cols a:hover { color: #fff; }
+
+/* FINGER REVEAL */
+.reveal {
+    height: 100vh;
+    overflow: hidden;
+    display: flex; justify-content: center; align-items: flex-end;
+    border-top: 1px solid var(--line);
+    background: radial-gradient(ellipse at 50% 100%, rgba(201,169,110,.14), transparent 65%), #000;
+}
+.reveal img {
+    height: 112%;
+    max-width: none;
+    object-fit: contain;
+    mix-blend-mode: screen;
     transform: translateY(105%);
-    transition: transform 1.6s cubic-bezier(.2, .8, .2, 1);
-    filter: drop-shadow(0 0 60px rgba(201, 169, 110, .3));
+    transition: transform 1.8s cubic-bezier(.2, .8, .2, 1);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 100%);
+            mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 100%);
 }
+.reveal.show img { transform: translateY(6%); }
 
-.finger-section.show .finger { transform: translateY(8%); }
+.copy { background: #000; text-align: center; padding: 26px; color: #55524a; font-size: 11px; letter-spacing: 3px; border-top: 1px solid var(--line); }
 
-footer {
-    padding: 30px;
-    text-align: center;
-    color: #5f5b51;
-    font-size: 11px;
-    letter-spacing: 4px;
-    border-top: 1px solid var(--line);
+/* MOBILE */
+@media (max-width: 900px) {
+    .links a:not(.cart) { display: none; }
+    .hero, .feature .wrap { grid-template-columns: 1fr; }
+    .hero { padding-bottom: 60px; }
+    .grid, .reviews { grid-template-columns: 1fr; }
+    .trust .wrap { grid-template-columns: 1fr 1fr; }
+    .trust div:nth-child(2) { border-right: 0; }
+    .trust div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .cols { grid-template-columns: 1fr 1fr; }
+    .reveal img { height: 85%; }
 }
 </style>
 </head>
@@ -184,47 +177,216 @@ footer {
 <body>
 
 <nav>
-    <div class="logo">LEGENDARY<span>.</span></div>
-    <div>
-        <a href="#home">HOME</a>
-        <a href="#about">ABOUT</a>
+    <div class="wrap">
+        <a href="#home" class="logo">LEGENDARY<b>.</b></a>
+        <div class="links">
+            <a href="#home">HOME</a>
+            <a href="#shop">SHOP</a>
+            <a href="#story">STORY</a>
+            <a href="#reviews">REVIEWS</a>
+            <a href="#" class="cart">CART (0)</a>
+        </div>
     </div>
 </nav>
 
-<section class="hero" id="home">
-    <div class="eyebrow">EST. 2026</div>
-    <h1>BE <em>LEGENDARY</em></h1>
-    <div class="shoe">👟</div>
-    <p>NOT JUST SHOES. A LEGACY.</p>
-    <a href="#about" class="btn">EXPLORE COLLECTION</a>
+<!-- HERO -->
+<header class="wrap hero" id="home">
+    <div>
+        <div class="eyebrow">NEW COLLECTION 2026</div>
+        <h1>Step into<br><em>something</em><br>legendary.</h1>
+        <p>Hand-finished sneakers built with premium materials and obsessive detail. Designed to be worn, remembered and talked about.</p>
+        <a href="#shop" class="btn">SHOP NOW</a>
+        <a href="#story" class="btn ghost">OUR STORY</a>
+    </div>
+    <div class="hero-img">
+        <img src="https://unsplash.com/photos/8GzbKs74yq4/download?force=true&w=1000" alt="White premium sneakers">
+    </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+    <div class="wrap">
+        <div><span>✦</span>FREE SHIPPING OVER ₹4,999</div>
+        <div><span>✦</span>30-DAY EASY RETURNS</div>
+        <div><span>✦</span>100% AUTHENTIC</div>
+        <div><span>✦</span>SECURE PAYMENTS</div>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="block" id="shop">
+    <div class="wrap">
+        <div class="head">
+            <h2>THE COLLECTION</h2>
+            <div class="rule"></div>
+        </div>
+
+        <div class="grid">
+            <article class="product">
+                <div class="thumb">
+                    <span class="tag">BESTSELLER</span>
+                    <img src="https://unsplash.com/photos/A8HaTLON5Gg/download?force=true&w=800" alt="Legend One">
+                </div>
+                <div class="info">
+                    <div><h3>Legend One</h3><small>Classic White · Leather</small></div>
+                    <div class="price">₹8,499</div>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="thumb">
+                    <span class="tag">NEW</span>
+                    <img src="https://unsplash.com/photos/beoVfTZDEb4/download?force=true&w=800" alt="Legend Runner">
+                </div>
+                <div class="info">
+                    <div><h3>Legend Runner</h3><small>Azure Orange · Mesh</small></div>
+                    <div class="price">₹9,999</div>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="thumb">
+                    <img src="https://unsplash.com/photos/utRLWdrYK8M/download?force=true&w=800" alt="Legend Crimson">
+                </div>
+                <div class="info">
+                    <div><h3>Legend Crimson</h3><small>Racing Red · Knit</small></div>
+                    <div class="price">₹7,999</div>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="thumb">
+                    <span class="tag">LIMITED</span>
+                    <img src="https://unsplash.com/photos/B0s90BDX9xc/download?force=true&w=800" alt="Legend High">
+                </div>
+                <div class="info">
+                    <div><h3>Legend High</h3><small>Black &amp; White · High-top</small></div>
+                    <div class="price"><s>₹13,999</s>₹11,499</div>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="thumb">
+                    <img src="https://unsplash.com/photos/2Rqmq5A-yZg/download?force=true&w=800" alt="Legend Suede">
+                </div>
+                <div class="info">
+                    <div><h3>Legend Suede</h3><small>Ruby Red · Suede</small></div>
+                    <div class="price">₹6,999</div>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="thumb">
+                    <img src="https://unsplash.com/photos/8GzbKs74yq4/download?force=true&w=800" alt="Legend Pure">
+                </div>
+                <div class="info">
+                    <div><h3>Legend Pure</h3><small>All White · Low-top</small></div>
+                    <div class="price">₹7,499</div>
+                </div>
+            </article>
+        </div>
+    </div>
 </section>
 
-<section class="about" id="about">
-    <h2>WALK YOUR OWN WAY</h2>
-    <div class="rule"></div>
-    <p>DESIGNED FOR LEGENDS. MADE FOR GREATNESS.</p>
+<!-- STORY -->
+<section class="block feature" id="story">
+    <div class="wrap">
+        <div class="pic">
+            <img src="https://unsplash.com/photos/B0s90BDX9xc/download?force=true&w=1000" alt="Craftsmanship">
+        </div>
+        <div>
+            <div class="eyebrow">CRAFTSMANSHIP</div>
+            <h2>Made slowly.<br>Worn for years.</h2>
+            <p>Every pair goes through 40+ quality checks before it leaves our workshop. Full-grain leather, cushioned insoles and reinforced stitching — because legends don't wear out.</p>
+            <ul>
+                <li>FULL-GRAIN ITALIAN LEATHER</li>
+                <li>MEMORY-FOAM COMFORT INSOLE</li>
+                <li>6-MONTH FOOTWEAR WARRANTY</li>
+            </ul>
+            <a href="#shop" class="btn">VIEW COLLECTION</a>
+        </div>
+    </div>
 </section>
 
-<section class="finger-section" id="finger">
-    <div class="finger">🖕</div>
+<!-- REVIEWS -->
+<section class="block" id="reviews">
+    <div class="wrap">
+        <div class="head">
+            <h2>LOVED BY LEGENDS</h2>
+            <div class="rule"></div>
+        </div>
+        <div class="reviews">
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>Super comfortable right out of the box. The leather quality honestly feels like shoes double the price.</p>
+                <b>ARJUN M. — KOCHI</b>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>Fast delivery, neat packaging and the fit was perfect. Easy size exchange too — great service.</p>
+                <b>NEHA R. — BENGALURU</b>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>Clean design that goes with everything. Wore them daily for months and they still look new.</p>
+                <b>SAMEER K. — MUMBAI</b>
+            </div>
+        </div>
+    </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section class="news">
+    <div class="wrap">
+        <h2>JOIN THE LEGACY</h2>
+        <p>Early access to drops and 10% off your first order.</p>
+        <form onsubmit="event.preventDefault(); this.innerHTML='<p style=&quot;margin:0;color:#c9a96e&quot;>Thank you — you\'re on the list.</p>'">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">SUBSCRIBE</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    © 2026 LEGENDARY KICKS. ALL RIGHTS RESERVED.
+    <div class="wrap cols">
+        <div>
+            <div class="logo">LEGENDARY<b>.</b></div>
+            <p>Premium sneakers, crafted with care and delivered across India.</p>
+        </div>
+        <div>
+            <h4>SHOP</h4>
+            <a href="#shop">New Arrivals</a>
+            <a href="#shop">Bestsellers</a>
+            <a href="#shop">Limited Edition</a>
+        </div>
+        <div>
+            <h4>HELP</h4>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">Size Guide</a>
+        </div>
+        <div>
+            <h4>COMPANY</h4>
+            <a href="#story">Our Story</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
 </footer>
 
+<!-- FINGER REVEAL (appears when you reach the footer) -->
+<section class="reveal" id="reveal">
+    <img src="https://unsplash.com/photos/40Kbl1GWfxI/download?force=true&w=1600" alt="">
+</section>
+
+<div class="copy">© 2026 LEGENDARY KICKS. ALL RIGHTS RESERVED.</div>
+
 <script>
-const section = document.getElementById("finger");
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            section.classList.add("show");
-        }
-    });
-}, { threshold: 0.4 });
-
-observer.observe(section);
+const reveal = document.getElementById("reveal");
+new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) reveal.classList.add("show"); });
+}, { threshold: 0.3 }).observe(reveal);
 </script>
 
 </body>
